@@ -1,0 +1,21 @@
+---
+# This playbook contains plays that will be run on Central nodes.
+
+- name: Install httpd
+  yum: name=httpd state=present
+
+- name: Ensure that httpd is running
+  service: name=httpd state=started enabled=yes
+
+- name: Install centreon
+  yum: name={{ item }} state=installed
+  with_items:
+    - centreon-base-config-centreon-engine
+    - centreon
+    - centreon-widget-graph-monitoring
+    - centreon-widget-host-monitoring
+    - centreon-widget-hostgroup-monitoring
+    - centreon-widget-service-monitoring
+    - centreon-widget-servicegroup-monitoring
+  notify:
+    - restart httpd
