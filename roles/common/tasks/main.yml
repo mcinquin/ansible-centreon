@@ -1,6 +1,21 @@
 ---
 # This playbook contains common plays that will be run on all nodes.
 
+- name: Install Selinux Management
+  yum: name={{ item }} state=installed
+  with_items:
+    - libselinux-python
+    - libsemanage-python
+
+- name: set SELinux to permissive
+  action: selinux policy=targeted state=permissive
+
+- name: ensure SELinux is turned off
+  action: command /usr/sbin/setenforce 0
+
+- name: Disable iptables
+  action: service name=iptables state=stopped enabled=false
+
 - name: Install ntp
   yum: name=ntp state=present
   tags: ntp
@@ -12,3 +27,9 @@
 
 - name: Ensure that ntpd is running
   service: name=ntpd state=started enabled=yes
+
+- name: Set CES repo.
+  template: src=ces-standard.repo dest=/etc/yum.repos.d/ owner=root group=root mode=0644
+
+- name: Import CES GPG key.
+  template: src=RPM-GPG-KEY-CES dest=/etc/pki/rpm-gpg/ owner=root group=root mode=0644
