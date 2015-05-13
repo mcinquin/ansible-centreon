@@ -1,5 +1,5 @@
 ---
-# This playbook will install mariadb.
+# This playbook contains plays that will be run on DB nodes.
 
 - name: Install MariaDB package
   yum: name={{ item }} state=installed
