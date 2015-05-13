@@ -1,0 +1,12 @@
+---
+# This playbook will install mariadb.
+
+- name: Install MariaDB package
+  yum: name={{ item }} state=installed
+  with_items:
+   - MariaDB-server
+   - MariaDB-client
+   - MySQL-python
+
+- name: Start MariaDB Service
+  service: name=mysql state=started enabled=yes
