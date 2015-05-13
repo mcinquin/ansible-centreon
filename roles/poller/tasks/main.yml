@@ -1,0 +1,14 @@
+---
+# This playbook contains plays that will be run on Poller nodes.
+
+- name: Install Poller
+  yum: name={{ item }} state=installed
+  with_items:
+    - centreon-poller-centreon-engine
+    - centreon-plugins
+
+- name: Instal GIT
+  yum: name=git state=installed
+
+- name: Install Centreon Plugins
+  git: repo=https://github.com/centreon/centreon-plugins.git dest=/usr/lib/nagios/plugins/centreon-plugins
