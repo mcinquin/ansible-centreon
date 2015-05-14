@@ -19,3 +19,6 @@
     - centreon-widget-servicegroup-monitoring
   notify:
     - restart httpd
+
+- name: Disable centstorage
+  action: service name=centstorage state=stopped enabled=false
