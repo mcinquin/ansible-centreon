@@ -5,3 +5,8 @@
 ####################
 ntp1_server: 192.168.x.x
 ntp2_server: 192.168.x.x
+
+####################
+## SNMP community ##
+####################
+snmp_community: public

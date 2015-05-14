@@ -18,7 +18,6 @@
 
 - name: Install ntp
   yum: name=ntp state=present
-  tags: ntp
 
 - name: Set ntp configuration
   template: src=ntp.conf.j2 dest=/etc/ntp.conf owner=root group=root
@@ -27,6 +26,17 @@
 
 - name: Ensure that ntpd is running
   service: name=ntpd state=started enabled=yes
+
+- name: Install snmpd
+  yum: name=net-snmp state=present
+
+- name: Set snmpd configuration
+  template: src=snmpd.conf.j2 dest=/etc/snmp/snmpd.conf owner=root group=root
+  notify:
+    - restart snmpd
+
+- name: Ensure that snmpd is running
+  service: name=snmpd state=started enabled=yes
 
 - name: Set CES repo.
   template: src=ces-standard.repo dest=/etc/yum.repos.d/ owner=root group=root mode=0644
