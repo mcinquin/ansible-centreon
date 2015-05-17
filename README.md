@@ -2,7 +2,7 @@
 
 ##Centreon Infrastructure (Central - Poller - Db Server) deployment
 
-- Requires Ansible 1.2 or newer
+- Requires Ansible 1.9 or newer
 - Expects CentOS/RHEL 6.x hosts
 
 These playbooks can deploy a simple all-in-one Centreon server or a distributed 
