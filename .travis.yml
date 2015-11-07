@@ -11,11 +11,13 @@ install:
   - pip install ansible
 
 script:
+  - echo localhost > inventory
+
   # Check the role/playbook's syntax.
-  - "ansible-playbook -i tests/inventory site.yml --syntax-check"
+  - ansible-playbook -i inventory site.yml --syntax-check
 
   # Run the role/playbook with ansible-playbook.
-  - "ansible-playbook -i tests/inventory site.yml --connection=local --sudo"
+  - ansible-playbook -i inventory site.yml --connection=local --sudo
 
   # Run the role/playbook again, checking to make sure it's idempotent.
   - >
