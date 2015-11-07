@@ -2,4 +2,7 @@
 - hosts: localhost
   remote_user: root
   roles:
-    - ansible-centreon
+    - common
+    - db
+    - central
+    - poller
