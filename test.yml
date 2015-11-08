@@ -1,0 +1,7 @@
+---
+- hosts: localhost
+
+  roles:
+    - { role: common, tags: ["common"] }
+    - { role: db, tags: ["db"] }
+    - { role: central, tags: ["central"] }
