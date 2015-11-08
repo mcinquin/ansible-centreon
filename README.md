@@ -1,7 +1,5 @@
 # ansible-centreon
 
-[![Build Status](https://travis-ci.org/Shini31/ansible-centreon.svg)](https://travis-ci.org/Shini31/ansible-centreon)
-
 ##Centreon Infrastructure (Central - Poller - Db Server) deployment
 
 - Requires Ansible 1.9 or newer
