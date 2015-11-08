@@ -8,7 +8,7 @@ python: "2.7"
 
 before_install:
   # Make sure everything's up to date.
-  - sudo yum updat
+  - sudo yum update
 
 install:
   # Install Ansible.
